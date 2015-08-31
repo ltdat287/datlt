@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('telephone_no');
             $table->date('birthday');
             $table->string('note', 300);
+            $table->string('role');
             $table->integer('boss_id');
             $table->boolean('disable')->default(false);
             $table->rememberToken();
