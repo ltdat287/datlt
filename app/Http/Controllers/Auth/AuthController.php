@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Http\Requests\LoginFormRequest;
 
 class AuthController extends Controller
 {
@@ -61,5 +62,30 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * @param  LoginFormRequest
+     * @return [type]
+     */
+    public function postLogin(LoginFormRequest $request)
+    {
+        $this->validate($request, [
+            'email' => 'required', 'password' => 'required',
+        ], $request->messages());
+
+        $credentials = $request->only('email', 'password');
+        
+        if ($this->auth->attempt($credentials, $request->has('remember')))
+        {
+            
+            return redirect()->intended($this->redirectPath());
+        }
+
+        return redirect($this->loginPath())
+                    ->withInput($request->only('email', 'remember'))
+                    ->withErrors([
+                        'email' => $this->getFailedLoginMessage(),
+                    ]);
     }
 }

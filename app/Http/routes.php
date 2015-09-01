@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', array('as' => 'home', 'uses' => 'UserController@index'));
+
+Route::get('login', array('as' => 'login', 'uses' => 'Auth\AuthController@getLogin'));
+Route::post('login', array('as' => 'login', 'uses' => 'Auth\AuthController@postLogin'));
+
+
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController'
+]);

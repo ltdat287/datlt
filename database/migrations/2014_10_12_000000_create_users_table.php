@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('note', 300);
             $table->string('role');
             $table->integer('boss_id');
-            $table->boolean('disable')->default(false);
+            $table->boolean('disabled')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

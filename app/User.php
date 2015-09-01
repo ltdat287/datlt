@@ -36,4 +36,15 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * @return [type]
+     */
+    public static function getUsers()
+    {
+        $results = self::where('disabled', '=', false)->orderBy('updated_at', 'DESC')->get();
+
+        return $results;
+    }
+
 }
