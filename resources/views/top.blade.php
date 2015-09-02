@@ -1,17 +1,18 @@
 @extends('master')
 
 @section('title')
+トップページ | 社員管理システム
+@endsection
+
+@section('header.h1')
 社員管理システム
 @endsection
 
-@section('header.title')
-社員管理システム
+@section('content.h2')
+トップページ
 @endsection
 
 @section('content')
-<section class="contents">
-	<h2>トップページ</h2>
-
 	<nav class="pure-menu pure-menu-horizontal">
 		<ul class="pure-menu-list">
 			<li class="pure-menu-item"><a href="" class="pure-menu-link pure-button">first</a></li>
@@ -72,5 +73,4 @@
 			<li class="pure-menu-item"><a href="" class="pure-menu-link pure-button">last</a></li>
 		</ul>
 	</nav>
-</section>
 @endsection

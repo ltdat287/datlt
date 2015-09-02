@@ -4,14 +4,15 @@
 ログイン | 社員管理システム
 @endsection
 
-@section('header.title')
-<a href="{{ url('/login') }}">社員管理システム</a>
+@section('header.h1')
+社員管理システム
+@endsection
+
+@section('content.h2')
+ログイン
 @endsection
 
 @section('content')
-<section class="contents">
-	<h2>ログイン</h2>
-
 	<section>
 	@if (count($errors) > 0)
 		<section class="error-box">
@@ -42,5 +43,4 @@
 			<button type="submit" class="pure-button pure-input-1-4 pure-button-primary">ログイン</button>
 		</form>
 	</section>
-</section>
 @endsection

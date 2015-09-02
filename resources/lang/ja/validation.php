@@ -13,12 +13,6 @@ return [
     'between'     => [
         'string' => 'メールアドレスまたは:attributeが誤っています。',
     ],
-    // 'between'              => [
-    //     'numeric' => 'The :attribute メールアドレスまたは :min and :max.',
-    //     'file'    => 'The :attribute must be giua :min and :max kilobytes.',
-    //     'string'  => 'The :attribute must be giua :min and :max characters.',
-    //     'array'   => 'The :attribute must have giua :min and :max items.',
-    // ],
     'user_not_delete_boss' => '部下が残っているBOSSを削除しようとしています。',
     'user_not_me_own' => '次のデータには部下が残っています。削除するためには全ての部下を解除してください',
     'user_not_exists' => '存在しないID：%sに対するアクセスがありました。',
@@ -26,6 +20,7 @@ return [
     'not_direct_access' => '確認画面を経由せずに直接参照されました。',
     'exists_employ_child' => '参照データに部下が残っています。',
     'not_match_email' => 'これらの資格情報は、当社の記録と一致しません。',
+
     /**
      * Change attribute from name of input to placeholder
      */
