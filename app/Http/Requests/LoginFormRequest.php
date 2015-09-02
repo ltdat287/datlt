@@ -25,7 +25,7 @@ class LoginFormRequest extends Request
     {
         return [
             //
-            'email' => 'required|max:255',
+            'email' => 'required|vp_email|max:255',
             'password' => 'required|between:8,32'
         ];
     }

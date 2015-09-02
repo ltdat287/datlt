@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Validator::extend('vp_email', function($attribute, $value, $parameters) {
+            if (filter_var($value, FILTER_VALIDATE_EMAIL) || $value == VP_EMAIL_DEFAULT)
+            {
+                return true;
+            }
+        
+            return true;
+        });
     }
 
     /**

@@ -1,0 +1,690 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"s",
+				"student"
+			],
+			[
+				"bs3-form",
+				"bs3-form:label	bs3-form-label"
+			],
+			[
+				"th",
+				"thead	Tag"
+			],
+			[
+				"select",
+				"selectclass"
+			],
+			[
+				"bs3-pan",
+				"bs3-panel:heading	bs3-panel-heading"
+			],
+			[
+				"requ",
+				"requests"
+			],
+			[
+				"Request",
+				"Requests"
+			],
+			[
+				"er",
+				"errorId"
+			],
+			[
+				"bs3-tab",
+				"bs3-table:responsive	bs3-table-responsive"
+			],
+			[
+				"bs3-ta",
+				"bs3-table	bs3-table"
+			],
+			[
+				"Vali",
+				"Validator"
+			],
+			[
+				"cla",
+				"classname"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "packe",
+		"selected_items":
+		[
+			[
+				"packe",
+				"Package Control: Install Package"
+			],
+			[
+				"revert",
+				"File: Revert"
+			],
+			[
+				"reve",
+				"File: Revert"
+			],
+			[
+				"package ",
+				"Package Control: Install Package"
+			],
+			[
+				"package remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"package ins",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"paci",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 472.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"list",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/G/xampp/htdocs/dinhln"
+	],
+	"file_history":
+	[
+		"/G/xampp/htdocs/datlt/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/Sublimerge Pro/Custom Comparisons.sublime-settings",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/Sublimerge Pro/Sublimerge.sublime-settings",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/Sublimerge.sublime-settings",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/README.md",
+		"/G/xampp/htdocs/datlt/database/seeds/UserTableSeeder.php",
+		"/G/xampp/htdocs/datlt/database/seeds/DatabaseSeeder.php",
+		"/G/xampp/htdocs/dinhln/.env",
+		"/G/xampp/htdocs/datlt/.env",
+		"/G/xampp/htdocs/datlt/sftp-config.json",
+		"/G/xampp/htdocs/datlt/app/Http/Controllers/Controller.php",
+		"/G/xampp/htdocs/datlt/tests/TestCase.php",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/G/xampp/htdocs/datlt/database/migrations/2015_08_31_091805_create_role_user_table.php",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/PHP.sublime-settings",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/G/xampp/htdocs/eccube/FacebookPlugin/LC_Page_Plg_Facebook_Config.php",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/SFTP.errors.log",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/bh_core.sublime-settings",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/SFTP/SFTP.sublime-settings",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/SFTP.sublime-settings",
+		"/G/xampp/htdocs/eccube/data/downloads/plugin/PayPalExpressCheckout/config.tpl",
+		"/G/xampp/htdocs/eccube/data/downloads/plugin/PayPalExpressCheckout/locales/en-US.po",
+		"/G/xampp/htdocs/eccube/data/class/util/SC_Utils.php",
+		"/G/xampp/htdocs/eccube/data/class/helper/SC_Helper_Locale.php",
+		"/G/xampp/htdocs/eccube/facebook.sublime-project",
+		"/G/xampp/htdocs/eccube/data/require_compat.php",
+		"/G/xampp/htdocs/thu vien php/Web/eccube/data/downloads/plugin/SamplePlugin/templates/sample_plugin_add.tpl",
+		"/G/xampp/htdocs/eccube/sftp-config.json",
+		"/G/xampp/htdocs/eccube/sftp-config-alt.json",
+		"/G/xampp/htdocs/thu vien php/Web/eccube/data/downloads/plugin/PayPalExpressCheckout/LC_Page_Mdl_PaypalExpress_Config.php",
+		"/G/xampp/htdocs/thu vien php/Web/eccube/data/downloads/plugin/SamplePlugin/templates/config.tpl",
+		"/G/xampp/htdocs/thu vien php/Web/eccube/data/downloads/plugin/SamplePlugin.tar.gz",
+		"/G/xampp/htdocs/thu vien php/Web/eccube/data/downloads/plugin/SamplePlugin/config.php",
+		"/C/Users/hp/Desktop/eccube-2.12.6en-p1/eccube-2.12.6en-p1/sftp-config.json",
+		"/G/xampp/htdocs/thu vien php/Web/test-php/bash-request.php",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/Terminal (Windows).sublime-settings",
+		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/SFTP/Default (Windows).sublime-keymap",
+		"/G/xampp/htdocs/student-project/resources/views/student/edit.blade.php",
+		"/G/xampp/htdocs/student-project/resources/views/student/index.blade.php",
+		"/G/xampp/htdocs/student-project/resources/views/student/edit_conf.blade.php",
+		"/G/xampp/htdocs/student-project/app/Http/Controllers/StudentController.php",
+		"/G/xampp/htdocs/student-project/app/Http/routes.php",
+		"/G/xampp/htdocs/student-project/resources/views/student/detail.blade.php",
+		"/G/xampp/htdocs/student-project/app/Http/Requests/StudentCreateRequest.php",
+		"/G/xampp/htdocs/student-project/resources/views/admin/partials/navbar.blade.php",
+		"/G/xampp/htdocs/student-project/resources/views/layout.blade.php",
+		"/G/xampp/htdocs/student-project/resources/views/student/_form.blade.php",
+		"/G/xampp/htdocs/student-project/resources/views/student/create.blade.php",
+		"/G/xampp/htdocs/student-project/resources/views/admin/partials/success.blade.php",
+		"/G/xampp/htdocs/student-project/app/Http/Controllers/Auth/AuthController.php",
+		"/G/xampp/htdocs/dinhln/app/Http/routes.php",
+		"/G/xampp/htdocs/student-project/.env",
+		"/G/xampp/htdocs/student-project/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
+		"/G/xampp/htdocs/student-project/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesAndRegistersUsers.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Requests/TagCreateRequest.php",
+		"/G/xampp/htdocs/blog-beauty/resources/views/admin/tag/_form.blade.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Controllers/Admin/TagController.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Requests/TagUpdateRequest.php",
+		"/G/xampp/htdocs/blog-beauty/resources/views/admin/tag/edit.blade.php",
+		"/G/xampp/htdocs/blog-beauty/resources/views/admin/partials/success.blade.php",
+		"/G/xampp/htdocs/blog-beauty/resources/views/admin/tag/index.blade.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/routes.php",
+		"/G/xampp/htdocs/blog-beauty/resources/views/admin/tag/create.blade.php",
+		"/G/xampp/htdocs/blog-beauty/app/Tag.php",
+		"/G/xampp/htdocs/blog-beauty/.env",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Controllers/TagCreateRequest.php",
+		"/G/xampp/htdocs/blog-beauty/gulpfile.js",
+		"/G/xampp/htdocs/blog-beauty/resources/assets/less/admin.less",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Controllers/Controller.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Controllers/Auth/AuthController.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Middleware/Authenticate.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Controllers/Admin/PostController.php",
+		"/G/xampp/htdocs/blog-beauty/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Kernel.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Controllers/BlogController.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Controllers/Auth/PasswordController.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Middleware/EncryptCookies.php",
+		"/G/xampp/htdocs/blog-beauty/app/Http/Middleware/RedirectIfAuthenticated.php",
+		"/G/xampp/htdocs/blog-beauty/vendor/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php",
+		"/G/xampp/htdocs/blog-beauty/resources/views/blog/post.blade.php",
+		"/G/xampp/htdocs/blog-beauty/resources/views/blog/index.blade.php",
+		"/G/xampp/htdocs/blog-beauty/database/migrations/2015_07_24_160238_create_posts_table.php",
+		"/G/xampp/htdocs/blog-beauty/app/Post.php",
+		"/G/xampp/htdocs/blog-beauty/database/factories/ModelFactory.php",
+		"/G/xampp/htdocs/blog-beauty/database/seeds/DatabaseSeeder.php",
+		"/G/xampp/htdocs/blog-beauty/config/blog.php",
+		"/G/xampp/htdocs/laravel/app/Http/routes.php",
+		"/G/xampp/htdocs/laravel/app/Http/Controllers/StudentController.php",
+		"/G/xampp/htdocs/simple-blog/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php",
+		"/G/xampp/htdocs/simple-blog/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RedirectsUsers.php",
+		"/G/xampp/htdocs/simple-blog/app/Http/Controllers/Auth/AuthController.php",
+		"/G/xampp/htdocs/simple-blog/app/Http/Controllers/PagesController.php",
+		"/G/xampp/htdocs/simple-blog/config/auth.php",
+		"/G/xampp/htdocs/simple-blog/app/Http/routes.php",
+		"/G/xampp/htdocs/simple-blog/vendor/laravel/framework/src/Illuminate/Contracts/Validation/Validator.php",
+		"/G/xampp/htdocs/simple-blog/app/Models/User.php",
+		"/G/xampp/htdocs/simple-blog/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
+		"/G/xampp/htdocs/simple-blog/app/Console/Commands/StartApp.php",
+		"/G/xampp/htdocs/simple-blog/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesAndRegistersUsers.php",
+		"/G/xampp/htdocs/simple-blog/resources/views/members/login.blade.php",
+		"/G/xampp/htdocs/laravel/resources/views/student/insert.blade.php",
+		"/G/xampp/htdocs/simple-blog/resources/views/articles/index.blade.php",
+		"/G/xampp/htdocs/simple-blog/app/Http/Controllers/Auth/PasswordController.php",
+		"/G/xampp/htdocs/simple-blog/app/Http/Controllers/MembersController.php",
+		"/G/xampp/htdocs/simple-blog/.env",
+		"/G/xampp/htdocs/laravel/app/Http/Controllers/UsertestController.php",
+		"/G/xampp/htdocs/simple-blog/app/Http/Controllers/ArticlesControl.php",
+		"/G/xampp/htdocs/laravel/resources/views/main.blade.php",
+		"/G/xampp/htdocs/laravel/resources/views/login.blade.php",
+		"/G/xampp/htdocs/simple-blog/resources/views/members",
+		"/G/xampp/htdocs/laravel/resources/views/dang-nhap.php",
+		"/G/xampp/htdocs/dinhln/app/Console/Commands/StartApp.php",
+		"/G/xampp/htdocs/dinhln/app/Console/Commands/DataUserFaker.php",
+		"/G/xampp/htdocs/dinhln/resources/views/members/add.blade.php",
+		"/G/xampp/htdocs/dinhln/resources/views/members/common/member_form.blade.php",
+		"/G/xampp/htdocs/dinhln/public/js/getcheckbox.js",
+		"/G/xampp/htdocs/dinhln/app/Http/Controllers/MemberController.php",
+		"/G/xampp/htdocs/dinhln/bower.json",
+		"/G/xampp/htdocs/dinhln/vendor/symfony/security-core/Symfony/Component/Security/Core/Authentication/Provider/RememberMeAuthenticationProvider.php",
+		"/G/xampp/htdocs/dinhln/resources/views/members/common/member_infor.blade.php",
+		"/G/xampp/htdocs/dinhln/resources/views/members/common/member_paginate.blade.php",
+		"/G/xampp/htdocs/dinhln/resources/views/app.blade.php",
+		"/G/xampp/htdocs/dinhln/resources/views/members/common/member_listing.blade.php",
+		"/G/xampp/htdocs/dinhln/resources/views/members/search.blade.php"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"reveal",
+			"reveal_in_side_bar",
+			"revert",
+			"get_locale",
+			"locales",
+			"getApiSignature",
+			"LC_Page_Admin",
+			"LC_Page_Admin.php",
+			"LC_Page_Admin",
+			"create",
+			"Create",
+			"reverse_direction",
+			"age",
+			"Age",
+			"age",
+			"subtitle",
+			"Subtitle",
+			"subtitle",
+			"title",
+			"student",
+			"tag",
+			"Tag",
+			"tag",
+			"Tag",
+			"bcrypt",
+			"email",
+			"name",
+			"\"]",
+			"input[name=",
+			"Search",
+			"label",
+			"create",
+			"$user",
+			"=",
+			"         =",
+			"$user->",
+			"option",
+			"td",
+			"name",
+			"item['id']",
+			"item['amount']",
+			"item['classname']",
+			"$item['id']",
+			"phone",
+			"address",
+			"illuminate",
+			"table",
+			"('",
+			"<th>Tên lớp</th>",
+			"nhiều",
+			"ít"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 118.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 118.0
+	},
+	"pinned_build_system": "",
+	"project": "dinhln.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"contro",
+				"app\\Http\\Controllers\\Controller.php"
+			],
+			[
+				"detail",
+				"resources\\views\\student\\detail.blade.php"
+			],
+			[
+				"nav",
+				"resources\\views\\admin\\partials\\navbar.blade.php"
+			],
+			[
+				"layout",
+				"resources\\views\\layout.blade.php"
+			],
+			[
+				"studentcreaterequest",
+				"app\\Http\\Requests\\StudentCreateRequest.php"
+			],
+			[
+				"crea",
+				"resources\\views\\student\\create.blade.php"
+			],
+			[
+				"navb",
+				"resources\\views\\admin\\partials\\navbar.blade.php"
+			],
+			[
+				"lay",
+				"resources\\views\\layout.blade.php"
+			],
+			[
+				"_form",
+				"resources\\views\\student\\_form.blade.php"
+			],
+			[
+				"index",
+				"resources\\views\\student\\index.blade.php"
+			],
+			[
+				"create",
+				"resources\\views\\student\\create.blade.php"
+			],
+			[
+				"stu",
+				"app\\Http\\Controllers\\StudentController.php"
+			],
+			[
+				"student",
+				"app\\Http\\Controllers\\StudentController.php"
+			],
+			[
+				"studentcon",
+				"app\\Http\\Controllers\\StudentController.php"
+			],
+			[
+				"route",
+				"app\\Http\\routes.php"
+			],
+			[
+				"authenticatesusers",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Auth\\AuthenticatesUsers.php"
+			],
+			[
+				"authenticatesandregistersusers",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Auth\\AuthenticatesAndRegistersUsers.php"
+			],
+			[
+				"authcon",
+				"app\\Http\\Controllers\\Auth\\AuthController.php"
+			],
+			[
+				"tagup",
+				"app\\Http\\Requests\\TagUpdateRequest.php"
+			],
+			[
+				"sucess",
+				"resources\\views\\admin\\partials\\success.blade.php"
+			],
+			[
+				"sucess.b",
+				"resources\\views\\admin\\partials\\success.blade.php"
+			],
+			[
+				"index.blade",
+				"resources\\views\\admin\\tag\\index.blade.php"
+			],
+			[
+				"tag",
+				"app\\Tag.php"
+			],
+			[
+				"tagcre",
+				"app\\Http\\Controllers\\TagCreateRequest.php"
+			],
+			[
+				"authenticate",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Auth\\AuthenticatesUsers.php"
+			],
+			[
+				"postc",
+				"app\\Http\\Controllers\\Admin\\PostController.php"
+			],
+			[
+				"validatesrequests",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Validation\\ValidatesRequests.php"
+			],
+			[
+				"blog",
+				"app\\Http\\Controllers\\BlogController.php"
+			],
+			[
+				"post",
+				"app\\Post.php"
+			],
+			[
+				"illuminate/contracts/validation/validator",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Contracts\\Validation\\Validator.php"
+			],
+			[
+				"redirectsusers",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Auth\\RedirectsUsers.php"
+			],
+			[
+				"registersusers",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Auth\\RegistersUsers.php"
+			],
+			[
+				"member",
+				"app\\Http\\Controllers\\MembersController.php"
+			],
+			[
+				"articles",
+				"app\\Http\\Controllers\\ArticlesControl.php"
+			],
+			[
+				"pages",
+				"app\\Http\\Controllers\\PagesController.php"
+			],
+			[
+				"start",
+				"app\\Console\\Commands\\StartApp.php"
+			],
+			[
+				"add",
+				"resources\\views\\members\\add.blade.php"
+			],
+			[
+				"memberco",
+				"app\\Http\\Controllers\\MemberController.php"
+			],
+			[
+				"memberc",
+				"vendor\\symfony\\security-core\\Symfony\\Component\\Security\\Core\\Authentication\\Provider\\RememberMeAuthenticationProvider.php"
+			],
+			[
+				"rout",
+				"app\\Http\\routes.php"
+			],
+			[
+				"member_",
+				"resources\\views\\members\\common\\member_infor.blade.php"
+			],
+			[
+				"",
+				"resources\\views\\members\\common\\member_form.blade.php"
+			],
+			[
+				"app",
+				"resources\\views\\app.blade.php"
+			],
+			[
+				"member_listing",
+				"resources\\views\\members\\common\\member_listing.blade.php"
+			],
+			[
+				"sea",
+				"resources\\views\\members\\search.blade.php"
+			],
+			[
+				"app.bl",
+				"resources\\views\\app.blade.php"
+			],
+			[
+				"user",
+				"app\\User.php"
+			],
+			[
+				"membersearchformrequest",
+				"app\\Http\\Requests\\MemberSearchFormRequest.php"
+			],
+			[
+				"select",
+				"resources\\views\\class\\selectclass.blade.php"
+			],
+			[
+				"classc",
+				"app\\Http\\Controllers\\ClassController.php"
+			],
+			[
+				"membercon",
+				"app\\Http\\Controllers\\MemberController.php"
+			],
+			[
+				"ro",
+				"app\\Http\\routes.php"
+			],
+			[
+				"studen",
+				"app\\Http\\Controllers\\StudentController.php"
+			],
+			[
+				"classname",
+				"app\\Classname.php"
+			],
+			[
+				"auth",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Auth.php"
+			],
+			[
+				"dele",
+				"resources\\views\\class\\delete.blade.php"
+			],
+			[
+				"list",
+				"resources\\views\\class\\list.blade.php"
+			],
+			[
+				"rou",
+				"app\\Http\\routes.php"
+			],
+			[
+				"page",
+				"app\\Http\\Controllers\\PageController.php"
+			],
+			[
+				"studnet",
+				"app\\Http\\Controllers\\StudentController.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 317.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
