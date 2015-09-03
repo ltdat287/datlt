@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.master')
 
 @section('title')
 ログアウト | 社員管理システム

@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Validator;
+use Carbon\Carbon;
+use App\Helpers\MemberHelper;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,36 @@ class AppServiceProvider extends ServiceProvider
             }
         
             return true;
+        });
+
+        //
+        Validator::extend('vp_telephone', function($attribute, $value, $parameters)
+        {
+            if (preg_match("/0(?:\d\-\d{4}|\d{2}\-\d{3}|\d{3}\-\d{2}|\d{4}\-\d{1})\-\d{4}$/", $value)) {
+                return true;
+            }
+            
+            return false;
+        });
+
+        //
+        Validator::extend('vp_date', function($attribute, $value, $parameters)
+        {
+            // Parse current value to time
+            $curDate = Carbon::createFromFormat(VP_TIME_FORMAT, $value);
+            
+            // Get min date
+            $minDate = Carbon::createFromFormat(VP_TIME_FORMAT, VP_DATE_MIN);
+            
+            // Get max date
+            $maxDate = Carbon::createFromFormat(VP_TIME_FORMAT, MemberHelper::getMaxDate());
+
+            if ($minDate < $curDate && $curDate < $maxDate)
+            {
+                return true;
+            }
+            
+            return false;
         });
     }
 

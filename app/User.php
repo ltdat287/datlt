@@ -38,7 +38,8 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * @return [type]
+     * [getUsers Get user info where not disabled and older by updated_at DESC]
+     * @return [collection]
      */
     public static function getUsers()
     {
@@ -46,5 +47,14 @@ class User extends Model implements AuthenticatableContract,
 
         return $results;
     }
-
+    /**
+     * Get bosses not disable from db.
+     * 
+     * @return objects
+     */
+    public static function getBosses()
+    {
+        $results = self::where('disabled', '=', false)->where('role', '=', 'boss')->get();
+        return $results;
+    }
 }

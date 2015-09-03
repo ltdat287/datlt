@@ -126,6 +126,6 @@ class AuthController extends Controller
     {
         Auth::logout();
         
-        return view ('logout');
+        return view ('auth.logout');
     }
 }

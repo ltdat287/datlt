@@ -7,8 +7,8 @@ return [
     'password'    => ':attributeまたはパスワードが誤っています。',
     'confirmed'   => 'メールアドレスと:attributeが異なっています。',
     'unique'      => ':attributeは既に使用されています。',
-    // 'vpdate'      => ':attributeは' . VP_DATE_MIN . 'から' . MemberHelper::getMaxDate() . 'までの範囲で入力してください。',
-    'vptelephone' => ':attributeには有効な電話番号を入力してください。',
+    'vp_date'      => ':attributeは' . VP_DATE_MIN . 'から' . MemberHelper::getMaxDate() . 'までの範囲で入力してください。',
+    'vp_telephone' => ':attributeには有効な電話番号を入力してください。',
     'date'        => ':attributeはYYYY-mm-dd形式で入力してください。',
     'between'     => [
         'string' => 'メールアドレスまたは:attributeが誤っています。',
@@ -26,6 +26,12 @@ return [
      */
     'attributes' => [
         'email' => 'メールアドレス',
-        'password' => 'パスワード'
+        'password' => 'パスワード',
+        'name' => '名前',
+        'kana' => '名前（カナ）',
+        'email_confirmation' => 'メールアドレス（確認）',
+        'telephone_no' => '電話番号',
+        'birthday' => '生年月日',
+        'note' => 'ノート',
     ],
 ];

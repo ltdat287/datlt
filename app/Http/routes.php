@@ -11,12 +11,18 @@
 |
 */
 
-Route::get('/', array('as' => 'home', 'uses' => 'UserController@index'));
-
 Route::get('login', array('as' => 'login', 'uses' => 'Auth\AuthController@getLogin'));
 Route::post('login', array('as' => 'login', 'uses' => 'Auth\AuthController@postLogin'));
 
-Route::get('logout', array('as' => 'logout', 'uses' => 'Auth\AuthController@getLogout'));
+// Check login before enter address
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('/', array('as' => 'home', 'uses' => 'UserController@index'));
+	Route::get('logout', array('as' => 'logout', 'uses' => 'Auth\AuthController@getLogout'));
+	Route::get('search',    array('as' => 'search', 'uses' => 'UserController@search'));
+	Route::get('add',       array('as' => 'add', 'uses' => 'UserController@create'));
+    Route::post('add/conf', array('as' => 'add_conf', 'uses' => 'UserController@add_conf'));
+    Route::post('add/comp', array('as' => 'add_comp', 'uses' => 'UserController@store'));
+});
 
 
 

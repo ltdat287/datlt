@@ -12,7 +12,7 @@
 <header>
 	<nav class="home-menu pure-menu pure-menu-horizontal relative">
 		<h1 class="pure-menu-heading"><a href="{{ url('/') }}">@yield('header.h1')</a></h1>
-		@include('common.navigation')
+		@include('layout.common.navigation')
 	</nav>
 </header>
 
@@ -23,7 +23,7 @@
 	
 </section>
 
-@include('common.footer')
+@include('layout.common.footer')
 
 </body>
 </html>

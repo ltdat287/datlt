@@ -58,8 +58,8 @@ class MemberHelper
         $role = '';
         if ($user)
         {
-            $role = $user->getFirstRole();
-            $role = ($role) ? $role->slug : '';
+            $role = $user->role;
+            $role = ($role) ? $role : '';
         }
         return $role;
     }

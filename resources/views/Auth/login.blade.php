@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.master')
 
 @section('title')
 ログイン | 社員管理システム
@@ -14,16 +14,9 @@
 
 @section('content')
 	<section>
-	@if (count($errors) > 0)
-		<section class="error-box">
-			<h3>!!ERROR!!</h3>
-			<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{{ $error }}}</li>
-				@endforeach
-			</ul>
-		</section>
-	@endif
+
+	@include('members.common.member_error')
+	
 		<form class="pure-form" action="{{ url('/login') }}" method="POST">
 			{!! csrf_field() !!}
 			<fieldset class="pure-group">
