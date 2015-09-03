@@ -6,7 +6,7 @@
 	<th>名前（カナ）</th>
 	<td>{{ $user->kana }}</td>
 </tr>
-@if (MemberHelper::getCurrentUserRole() != 'employ' && Route::currentRouteName() == 'edit_comp')
+@if (MemberHelper::getCurrentUserRole() != 'employ')
 <tr>
 	<th>メールアドレス</th>
 	<td>{{ $user->email }}</td>
@@ -31,7 +31,15 @@
     @if (MemberHelper::getCurrentUserRole() == 'admin' )
         <tr>
             <th>権限</th>
-            <td>{{ $role }}</td>
+            @if ($user->role === 'admin')
+                <td>{{{ ADMIN }}}</td>
+            @elseif ($user->role === 'employee')
+                <td>{{{ EMPLOYEE }}}</td>
+            @elseif ($user->role === 'boss')
+                <td>{{{ BOSS }}}</td>
+            @else
+                <td>{{{ $user->role }}}</td>
+            @endif
         </tr>
         <tr>
         	<th>BOSS</th>
@@ -45,8 +53,8 @@
     
     @if (MemberHelper::getCurrentUserRole() != 'employ' && isset($user->updated_at))
         <tr>
-            <th>{{ trans('labels.updated_at') }}</th>
-            <td>{{ $user->updated_at }}</td>
+            <th>{{ trans('更新日時') }}</th>
+            <td>{{ $user->updated_at->format('Y/m/d H:i:s') }}</td>
         </tr>
     @endif
 @endif

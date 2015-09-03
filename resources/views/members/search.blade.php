@@ -44,9 +44,9 @@
 				<td>権限</td>
 				<td colspan="3" align="center">
 					<ul class="pure-menu-list pure-menu-horizontal">
-                        @foreach ($roles as $role)
+                        @foreach ($roles as $key => $value)
                         <li class="pure-menu-item pure-u-1-6">
-                            <label for="{{ $role->slug }}"><input {{ (Input::has($role->slug) && Input::has($role->slug) == '1') ? 'checked=checked' : '' }} type="checkbox" id="{{ $role->id }}" name="{{ $role->slug }}" value="1">{{ $role->name }}</label>
+                            <label for="{{ $value }}"><input {{ (Input::has($key) && Input::has($key) == 'admin') ? 'checked=checked' : '' }} type="checkbox" id="role" name="role" value="{{ $key }}">{{ $value }}</label>
                         </li>
                         @endforeach
 					</ul>
@@ -78,7 +78,7 @@
 
 <section>
     @if (! count($users))
-        <p class="error-box">{{ trans('labels.no_result_search') }}</p>
+        <p class="error-box">{{ trans('検索結果にマッチしませんでした。') }}</p>
     @endif
 </section>
 

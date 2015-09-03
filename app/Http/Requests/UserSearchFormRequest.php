@@ -26,7 +26,7 @@ class UserSearchFormRequest extends Request
         return [
             //
             'name'         => 'max:16',
-            'email'        => 'vpemail|max:254',
+            'email'        => 'vp_email|max:254',
             'kana'         => 'max:16',
             'telephone_no' => 'max:13',
             'start_date'   => 'date_format:Y-m-d',

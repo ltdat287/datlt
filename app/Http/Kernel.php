@@ -29,5 +29,10 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'manager' => \App\Http\Middleware\CheckIsManager::class,
+        'is_disabled' => \App\Http\Middleware\CheckUserDisabled::class,
+        'check_edit' => \App\Http\Middleware\CheckUserHasEdit::class,
+        'direct_access' => \App\Http\Middleware\CheckDirectAccess::class,
+        'check_delete' => \App\Http\Middleware\CheckDeleteMember::class,
     ];
 }

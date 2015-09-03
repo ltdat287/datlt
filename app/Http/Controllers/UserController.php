@@ -9,10 +9,12 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\UserSearchFormRequest;
 use App\Http\Requests\UserAddFormRequest;
+use App\Http\Requests\UserEditFormRequest;
 use Input;
 use App\Helpers\MemberHelper;
 use Session;
 use Redirect;
+use Auth;
 
 class UserController extends Controller
 {
@@ -23,12 +25,30 @@ class UserController extends Controller
      */
     public function index()
     {
-        //List user with non disabled DESC
+        // Redirect to user detail if has employ role.
+        if (MemberHelper::getCurrentUserRole() == 'employ')
+        {
+            $user = Auth::user();
+            return redirect('/member/' . $user->id . '/detail');
+        }
+        
+        // List user employ with non disable DESC </dg>;
         $users = User::getUsers();
+        
+        // Only listing employ of current user own
+        if (MemberHelper::getCurrentUserRole() == 'boss')
+        {
+            $users->where('boss_id', '=', Auth::user()->id);
+        }
+        
+        //max record display on page
+        $users = $users->paginate(VP_LIMIT_PAGINATE);
+        
+        // Set data for view
         $data = array(
-            'users' => $users,
+            'users'    => $users,
         );
-
+        
         return view('members.top', $data);
     }
 
@@ -50,7 +70,7 @@ class UserController extends Controller
         );
         
         // Get bosses
-        $bosses = User::getBosses();
+        $bosses = User::getBosses()->get();
 
         // Get user session
         $user = Session::get('user');
@@ -117,7 +137,26 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // Clear user session.
+        Session::forget('user');
+        
+        $user = User::find($id);
+        
+        // Get role.
+        $role = $user->role;
+        
+        // Get boss.
+        $boss = User::find($user->boss_id);
+        
+        // Prepare data for view.
+        $data = array (
+            'user' => $user,
+            'role' => $role,
+            'boss' => $boss,
+            'id'   => $id
+        );
+        
+        return view('members.detail', $data);
     }
 
     /**
@@ -128,19 +167,123 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Clear user session.
+        Session::forget('user');
+        
+        // Get roles
+        
+        $roles = array(
+            'admin' => ADMIN,
+            'boss' => BOSS,
+            'employee' => EMPLOYEE,
+        );
+        
+        // Get bosses
+        $bosses = User::getBosses()->get();
+        
+        // Get user from db
+        $user = User::find($id);
+        
+        // Get user session
+        if (Session::has('user'))
+        {
+            $user = Session::get('user');
+        } else {
+            Session::put('user', $user);
+        }
+        
+        // Prepare data for view.
+        $data = array(
+            'id'     => $id,
+            'roles'  => $roles,
+            'bosses' => $bosses,
+            'user'   => $user
+        );
+        
+        return view('members.edit', $data);
+    }
+
+    /**
+     * [POST] Process validation form edit member submit
+     * 
+     * @param integer $id
+     * @param UserEditFormRequest $request
+     */
+    public function edit_conf($id, UserEditFormRequest $request)
+    {
+        // Get user data
+        $data = self::_confirmUser($request);
+        
+        $data['id'] = $id;
+        
+        return view('members.edit_conf', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        // Get user from session.
+        $user   = Session::get('user');
+        $record = User::find($id);
+        if (! $record) {
+            return Redirect::route('not_found');
+        }
+        $record = self::_saveUser($record, $user);
+        
+        // Clear session
+        Session::forget('user');
+        
+        $message = self::_linkToDetail($record->id) . trans('として追加しました。');
+        $data = array(
+            'label' => trans('追加（完了）'),
+            'message' => $message
+        );
+        
+        return view('members.common.member_comp', $data);
+    }
+
+    /**
+     * [POST] Delete user.
+     * 
+     * @param integer $id
+     * @return \Illuminate\View\View
+     */
+    public function delete_conf($id)
+    {
+        // Clear user session.
+        Session::forget('user');
+        
+        // Get user.
+        $user = User::find($id);
+        
+        // Get role.
+        $role = $user->role;
+         
+        // Get boss.
+        $boss = User::find($user->boss_id);
+        
+        $errors = array();
+        // Check current role is BOSS and not same boss_id of user delete.
+        if (MemberHelper::getCurrentUserRole() == 'boss' && $user->boss_id != Auth::user()->id)
+        {
+            $errors[] = trans('validation.user_not_delete_boss');
+        }
+        
+        // Prepare data for view.
+        $data = array(
+            'id' => $id,
+            'user' => $user,
+            'role' => $role,
+            'boss' => $boss,
+            'errors' => $errors
+        );
+        
+        return view('members.delete_conf', $data);
     }
 
     /**
@@ -151,7 +294,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $record = User::find($id);
+        
+        // Destroy 
+        $record->disabled = true;
+        $record->save();
+        
+        $data = array(
+            'label' => trans('削除（完了）'),
+            'message' => trans('削除しました。')
+        );
+        
+        return view('members.common.member_comp', $data);
     }
 
     /**
@@ -167,7 +321,7 @@ class UserController extends Controller
         
         // Check roles checked
         $user_ids = array();
-        $arr_checked = ['admin', 'boss', 'employ'];
+        $arr_checked = ['admin', 'boss', 'employee'];
         foreach ($arr_checked as $checked)
         {
             if (Input::has($checked) && Input::get($checked) == 1)
@@ -182,17 +336,6 @@ class UserController extends Controller
                 }
             }
             
-        }
-        
-        //Check has value delete and decode JSON to ARRAY; 
-        if (Input::has('putValdel')) 
-        {
-            $Json2Array = json_decode(Input::get('putValdel'));
-            foreach ($Json2Array as $user_id) {
-                $role = User::where('id', '=', $user_id)->getFirstRole();
-                dd($role);
-                $user = User::where('id', '=', $user_id)->delete();
-            }
         }
 
         /*  */
@@ -230,7 +373,7 @@ class UserController extends Controller
         {
             $users = $users->whereRaw($cons, $arr_vals);
         }
-        
+
         // Paginate users.
         if (count($users))
         {
@@ -238,7 +381,11 @@ class UserController extends Controller
         }
         
         // Get role.
-        $roles = Role::all();
+        $roles = array(
+            'admin' => ADMIN,
+            'boss' => BOSS,
+            'employee' => EMPLOYEE
+        );
         
         // Build data for view.
         $data = array(

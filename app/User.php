@@ -43,7 +43,7 @@ class User extends Model implements AuthenticatableContract,
      */
     public static function getUsers()
     {
-        $results = self::where('disabled', '=', false)->orderBy('updated_at', 'DESC')->get();
+        $results = self::where('disabled', '=', false)->orderBy('updated_at', 'DESC');
 
         return $results;
     }
@@ -54,7 +54,8 @@ class User extends Model implements AuthenticatableContract,
      */
     public static function getBosses()
     {
-        $results = self::where('disabled', '=', false)->where('role', '=', 'boss')->get();
+        $results = self::where('disabled', '=', false)->where('role', '=', 'boss');
+
         return $results;
     }
 }

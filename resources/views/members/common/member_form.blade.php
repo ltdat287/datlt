@@ -97,7 +97,7 @@
 		<select autocomplete="off" name="use_role" class="pure-input-1">
             @foreach ($roles as $key => $value)
                 @if ($user != null)
-                <option value="{{ $role }}" {{ ($user->getFirstRole() && $user->getFirstRole()->slug == $role) ? "selected=selected" : '' }} >{{{ $role->name }}}</option>
+                <option value="{{ $key }}" {{ ($user->role && $user->role == $key) ? "selected=selected" : '' }} >{{{ $value }}}</option>
                 @else
                 <option value="{{ $key }}" >{{{ $value }}}</option>
                 @endif
