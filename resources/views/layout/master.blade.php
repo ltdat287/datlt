@@ -4,8 +4,8 @@
 	<meta content="" name="description">
 	<title>@yield('title')</title>
 	<link href="/" rel="canonical">
-	<link rel="stylesheet" href="./css/pure-min.css">
-	<link rel="stylesheet" href="./css/custom.css">
+	<link rel="stylesheet" href="{{{ asset('/css/pure-min.css') }}}">
+    <link rel="stylesheet" href="{{{ asset('/css/custom.css') }}}">
 </head>
 <body>
 
