@@ -67,9 +67,9 @@ return [
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'datlt_edu_ems'),
+            'username' => env('DB_USERNAME', 'edu_ems_admin'),
+            'password' => env('DB_PASSWORD', 'A6FUVmb6'),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',

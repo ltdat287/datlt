@@ -48,6 +48,6 @@ Route::group(['middleware' => 'auth'], function() {
 
 
 Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController'
+	'auth'     => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController'
 ]);
