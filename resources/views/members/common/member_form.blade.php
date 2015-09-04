@@ -20,7 +20,7 @@
 		@endif
 	</td>
 </tr>
-@if (MemberHelper::getCurrentUserRole() != 'employ')
+@if (MemberHelper::getCurrentUserRole() != 'employee')
 <tr>
 	<th {{ $errors->has('email') ? "class=error-cell" : '' }} >メールアドレス</th>
 	<td>
@@ -66,7 +66,7 @@
 		@endif
 	</td>
 </tr>
-@if (MemberHelper::getCurrentUserRole() != 'employ')
+@if (MemberHelper::getCurrentUserRole() != 'employee')
 <tr>
 	<th {{ $errors->has('note') ? "class=error-cell" : '' }} >ノート</th>
 	<td>
@@ -109,7 +109,7 @@
 	<th {{ $errors->has('boss_id') ? "class=error-cell" : '' }} >BOSS</th>
 	<td>
 		<select autocomplete="off" name="boss_id" class="pure-input-1">
-			<option value="0">--</option>
+			<option value="">--</option>
 			@foreach($bosses as $boss)
 			<option value="{{{ $boss->id }}}" {{ (MemberHelper::getOld('boss_id') == $boss->id) ? "selected" : '' }}>{{{ $boss->name }}}</option>
 			@endforeach

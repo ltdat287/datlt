@@ -14,11 +14,20 @@
 
 @section('content')
 	<section>
-		<p>
-			{!! $message !!}
-		</p>
-		<div>
-			<a class="pure-button pure-button-primary" href="{{ url('/search') }}">検索画面へ</a>
-		</div>
+		@if (MemberHelper::getCurrentUserRole() == 'employee')
+			<p>
+				登録情報を更新しました。
+			</p>
+			<div>
+				<a class="pure-button pure-button-primary" href="{{ url('/') }}">戻る</a>
+			</div>
+		@else
+			<p>
+				{!! $message !!}
+			</p>
+			<div>
+				<a class="pure-button pure-button-primary" href="{{ url('/search') }}">検索画面へ</a>
+			</div>
+		@endif
 	</section>
 @endsection

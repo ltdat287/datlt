@@ -35,7 +35,6 @@
 						@else
 							<td>{{{ $user->role }}}</td>
 						@endif
-
 					</tr>
 		            @endforeach
 				@endif

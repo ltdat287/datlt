@@ -27,7 +27,7 @@ class CheckIsManager
         }
         
         // Only redirect if user not employ.
-        if ($role == 'employ')
+        if ($role == 'employee')
         {
             return redirect('/');
         }

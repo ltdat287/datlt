@@ -6,7 +6,7 @@
 	<th>名前（カナ）</th>
 	<td>{{ $user->kana }}</td>
 </tr>
-@if (MemberHelper::getCurrentUserRole() != 'employ')
+@if (MemberHelper::getCurrentUserRole() != 'employee')
 <tr>
 	<th>メールアドレス</th>
 	<td>{{ $user->email }}</td>
@@ -23,7 +23,7 @@
 	?>
 	<td>{{ $birthday->format('Y/m/d') }}</td>
 </tr>
-@if (MemberHelper::getCurrentUserRole() != 'employ')
+@if (MemberHelper::getCurrentUserRole() != 'employee')
     <tr>
     	<th>ノート</th>
     	<td><?php echo nl2br($user->note)?></td>
@@ -51,7 +51,7 @@
         </tr>
     @endif
     
-    @if (MemberHelper::getCurrentUserRole() != 'employ' && isset($user->updated_at))
+    @if (MemberHelper::getCurrentUserRole() != 'employee' && isset($user->updated_at))
         <tr>
             <th>{{ trans('更新日時') }}</th>
             <td>{{ $user->updated_at->format('Y/m/d H:i:s') }}</td>

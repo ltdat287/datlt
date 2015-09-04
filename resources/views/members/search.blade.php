@@ -46,7 +46,7 @@
 					<ul class="pure-menu-list pure-menu-horizontal">
                         @foreach ($roles as $key => $value)
                         <li class="pure-menu-item pure-u-1-6">
-                            <label for="{{ $value }}"><input {{ (Input::has($key) && Input::has($key) == 'admin') ? 'checked=checked' : '' }} type="checkbox" id="role" name="role" value="{{ $key }}">{{ $value }}</label>
+                            <label for="{{ $value }}"><input {{ (Input::has($key) && Input::has($key) == '1') ? 'checked=checked' : '' }} type="checkbox" id="{{ $key }}" name="{{ $key }}" value="1">{{ $value }}</label>
                         </li>
                         @endforeach
 					</ul>
@@ -73,7 +73,8 @@
 	    	@include('members.common.member_paginate_bottom', ['users' => $users])
 		
 		@endif
-	</form> <!-- #form-get-select-delete -->
+
+	</form>
 </section>
 
 <section>

@@ -19,21 +19,30 @@ use Auth;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return Response
      */
     public function index()
     {
-        // Redirect to user detail if has employ role.
-        if (MemberHelper::getCurrentUserRole() == 'employ')
-        {
-            $user = Auth::user();
-            return redirect('/member/' . $user->id . '/detail');
-        }
-        
         // List user employ with non disable DESC </dg>;
         $users = User::getUsers();
+
+        // Redirect to user detail if has employ role.
+        if (MemberHelper::getCurrentUserRole() == 'employee')
+        {
+            $users->where('id', '=', Auth::user()->id);
+        }
         
         // Only listing employ of current user own
         if (MemberHelper::getCurrentUserRole() == 'boss')
@@ -60,12 +69,12 @@ class UserController extends Controller
     public function create()
     {
         // Clear user session.
-        Session::forget('user');
+        //Session::forget('user');
         
         // create array roles to display
         $roles = array(
-            'admin' => ADMIN,
-            'boss' => BOSS,
+            'admin'    => ADMIN,
+            'boss'     => BOSS,
             'employee' => EMPLOYEE
         );
         
@@ -77,9 +86,9 @@ class UserController extends Controller
         
         // Build data for views
         $data = array(
-            'roles' => $roles,
+            'roles'  => $roles,
             'bosses' => $bosses,
-            'user' => $user
+            'user'   => $user
         );
 
         return view('members.add', $data);
@@ -121,7 +130,7 @@ class UserController extends Controller
             
             $message = self::_linkToDetail($record->id) . trans('として追加しました。');
             $data = array(
-                'label' => trans('追加（完了）'),
+                'label'   => trans('追加（完了）'),
                 'message' => $message
             );
             
@@ -173,8 +182,8 @@ class UserController extends Controller
         // Get roles
         
         $roles = array(
-            'admin' => ADMIN,
-            'boss' => BOSS,
+            'admin'    => ADMIN,
+            'boss'     => BOSS,
             'employee' => EMPLOYEE,
         );
         
@@ -229,11 +238,12 @@ class UserController extends Controller
     {
         // Get user from session.
         $user   = Session::get('user');
+
         $record = User::find($id);
         if (! $record) {
             return Redirect::route('not_found');
         }
-        $record = self::_saveUser($record, $user);
+        $record = self::_updateUser($record, $user);
         
         // Clear session
         Session::forget('user');
@@ -276,10 +286,10 @@ class UserController extends Controller
         
         // Prepare data for view.
         $data = array(
-            'id' => $id,
-            'user' => $user,
-            'role' => $role,
-            'boss' => $boss,
+            'id'     => $id,
+            'user'   => $user,
+            'role'   => $role,
+            'boss'   => $boss,
             'errors' => $errors
         );
         
@@ -326,7 +336,7 @@ class UserController extends Controller
         {
             if (Input::has($checked) && Input::get($checked) == 1)
             {
-                $users = User::getUsers()->role($checked)->get();
+                $users = User::getUsers()->where('role', '=', $checked)->get();
                 foreach ($users as $user)
                 {
                     if (! in_array($user->id, $user_ids))
@@ -334,8 +344,7 @@ class UserController extends Controller
                         $user_ids[] = $user->id;
                     }
                 }
-            }
-            
+            }  
         }
 
         /*  */
@@ -414,7 +423,7 @@ class UserController extends Controller
         $user->telephone_no       = $request->get('telephone_no');
         $user->birthday           = $request->get('birthday');
         $user->note               = ($request->get('note')) ? $request->get('note') : '';
-        $user->role             = $request->get('use_role');
+        $user->role               = $request->get('use_role');
 
         if (MemberHelper::getCurrentUserRole() == 'boss')
         {
@@ -491,11 +500,58 @@ class UserController extends Controller
         }
         
         // Add role for user.
-        if (MemberHelper::getCurrentUserRole() != 'employ')
+        if (MemberHelper::getCurrentUserRole() != 'employee')
         {
             $record->role = $user->role;
         }
 
+        $record->save();
+        
+        return $record;
+    }
+
+    /**
+     * Common function for update user.
+     * 
+     * @param object $record
+     * @param object $user
+     * @return object
+     */
+    private static function _updateUser(&$record, $user)
+    {
+        if (! $user) {
+            return null;
+        }
+        
+        // Build data.
+        $record->name         = $user->name;
+        $record->kana         = $user->kana;
+        $record->password     = bcrypt($user->password);
+        $record->telephone_no = $user->telephone_no;
+        $record->birthday     = $user->birthday;
+
+        if (MemberHelper::getCurrentUserRole() != 'employee')
+        {
+            $record->email        = $user->email;
+            $record->note         = ($user->note) ? $user->note : '';
+            if (MemberHelper::getCurrentUserRole() == 'boss')
+            {
+                $user->role  = 'employee';
+                $record->boss_id = MemberHelper::checkLogin()->id;
+            }
+            else
+            {
+                if ($user->role == 'employee') {
+                    $record->boss_id = (int) $user->boss_id;
+                } else {
+                    $record->boss_id = 0;
+                }
+            }
+            
+            // Add role for user.
+            $record->role = $user->role;
+        }
+        
         $record->save();
         
         return $record;

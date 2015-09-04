@@ -36,6 +36,12 @@ class AuthController extends Controller
     }
 
     /**
+     * [$username Set only login using email]
+     * @var string
+     */
+    protected $username = 'email';
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data

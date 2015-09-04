@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         //
         Validator::extend('vp_telephone', function($attribute, $value, $parameters)
         {
-            if (preg_match("/0(?:\d\-\d{4}|\d{2}\-\d{3}|\d{3}\-\d{2}|\d{4}\-\d{1})\-\d{4}$/", $value)) {
+            if ("regex:/0(?:\d\-\d{4}|\d{2}\-\d{3}|\d{3}\-\d{2}|\d{4}\-\d{1})\-\d{4}$/") {
                 return true;
             }
             
@@ -55,6 +55,12 @@ class AppServiceProvider extends ServiceProvider
             
             return false;
         });
+
+        // //
+        // Validator::extend('boss_with_employee', function($attribute, $value, $parameters) 
+        // {
+        //     return ( Validator->getValue($parameters[0]) != 'employee') ? false : true;
+        // });
     }
 
     /**

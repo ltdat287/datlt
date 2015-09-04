@@ -32,7 +32,7 @@ else
                 url('/logout') => trans('ログアウト')
             );
             break;
-        case 'employ':
+        case 'employee':
             $name     = $user->name;
             $arrLinks = array(
                 url('/logout') => trans('ログアウト')

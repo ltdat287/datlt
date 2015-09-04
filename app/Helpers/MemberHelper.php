@@ -80,7 +80,7 @@ class MemberHelper
         
         if ($role == 'admin' 
             || $role == 'boss' && Auth::user()->id == $member->boss_id
-            || $role == 'employ' && Auth::user()->id == $id) {
+            || $role == 'employee' && Auth::user()->id == $id) {
             $allow = true;
         }
         

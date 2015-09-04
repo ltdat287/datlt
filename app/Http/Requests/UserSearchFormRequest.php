@@ -29,11 +29,11 @@ class UserSearchFormRequest extends Request
             'email'        => 'vp_email|max:254',
             'kana'         => 'max:16',
             'telephone_no' => 'max:13',
-            'start_date'   => 'date_format:Y-m-d',
-            'end_date'     => 'date_format:Y-m-d',
+            'start_date'   => 'vp_date|date_format:Y-m-d',
+            'end_date'     => 'vp_date|date_format:Y-m-d|start_to_end_date:start_date',
             'admin'        => 'in:1',
             'boss'         => 'in:1',
-            'employ'       => 'in:1'
+            'employee'     => 'in:1'
         ];
     }
 }

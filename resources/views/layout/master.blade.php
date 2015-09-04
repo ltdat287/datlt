@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta content="" name="description">
+	<meta content="社員管理システム ログインページです。" name="description">
 	<title>@yield('title')</title>
 	<link href="/" rel="canonical">
 	<link rel="stylesheet" href="{{{ asset('/css/pure-min.css') }}}">
