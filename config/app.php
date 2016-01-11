@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://edu.localhost/datlt/',
+    'url' => 'http://ems-ltdat.rhcloud.com/',
 
     /*
     |--------------------------------------------------------------------------
