@@ -7,8 +7,9 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use App\Http\Requests\LoginFormRequest;
+use Illuminate\Http\Request;
 use Auth;
+use Session;
 
 class AuthController extends Controller
 {
@@ -36,6 +37,12 @@ class AuthController extends Controller
     }
 
     /**
+     * Set redirect path after login
+     * @var string
+     */
+    protected $redirectPath = '/';
+
+    /**
      * [$username Set only login using email]
      * @var string
      */
@@ -50,8 +57,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
     }
@@ -65,15 +72,15 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
 
     /**
-     * [loginPath description]
-     * @return [type] [description]
+     * Set path to login
+     * @return url
      */
     public function loginPath()
     {
@@ -81,23 +88,53 @@ class AuthController extends Controller
     }
 
     /**
-     * [redirectPath description]
-     * @return [type] [description]
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  bool  $throttles
+     * @return \Illuminate\Http\Response
      */
-    public function redirectPath()
+    protected function handleUserWasAuthenticated(Request $request, $throttles)
     {
-        return ('/');
+        if ($throttles) {
+            $this->clearLoginAttempts($request);
+        }
+
+        if (method_exists($this, 'authenticated')) {
+            return $this->authenticated($request, Auth::user());
+        }
+
+        return redirect()->to($this->redirectPath());
     }
 
     /**
-     * @param  LoginFormRequest
+     * @param  Method for post login
      * @return [type]
      */
-    public function postLogin(LoginFormRequest $request)
+    public function postLogin(Request $request)
     {
-        $this->validate($request, [
-            $this->loginUsername() => 'required', 'password' => 'required',
-        ]);
+        $rules = array(
+            'email'    => 'sometimes|required|vp_email|max:255',
+            'password' => 'sometimes|required|between:8,32'
+        );
+
+        // Check exists of input login post form
+        foreach ($rules as $key => $value)
+        {
+            if (!$request->exists($key)) {
+                $errors[] = sprintf(trans('validation.attribute_exists'), trans('validation.attributes.' . $key));
+
+                return view('errors.system_error')->with('errors', $errors);
+            }
+        }
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+
+                    return back()
+                    ->withErrors($validator)
+                    ->withInput();
+        }
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -128,10 +165,17 @@ class AuthController extends Controller
             ]);
     }
 
+    /**
+     * Set view logout and clear session auth login
+     * @return view logout
+     */
     public function getLogout()
     {
         Auth::logout();
-        
+
+        // Destroy all session of page
+        Session::flush();
+
         return view ('auth.logout');
     }
 }

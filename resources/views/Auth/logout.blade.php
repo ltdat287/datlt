@@ -1,5 +1,9 @@
 @extends('layout.master')
 
+@section('description')
+"社員管理システム ログアウトページです。"
+@endsection
+
 @section('title')
 ログアウト | 社員管理システム
 @endsection

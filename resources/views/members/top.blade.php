@@ -1,5 +1,9 @@
 @extends('layout.master')
 
+@section('description')
+"社員管理システム トップページです。"
+@endsection
+
 @section('title')
 トップページ | 社員管理システム
 @endsection
@@ -14,8 +18,10 @@
 
 @section('content')
 
-@include('members.common.member_paginate_top')
-@include('members.common.member_list')
-@include('members.common.member_paginate_bottom')
+@if (count($users))
+	@include('members.common.member_paginate_top')
+	@include('members.common.member_list')
+	@include('members.common.member_paginate_bottom')
+@endif
 
 @endsection

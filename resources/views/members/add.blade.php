@@ -1,4 +1,15 @@
+<?php
+	if ((Route::getCurrentRoute()->getName() === 'add') && Session::has('user')) {
+		Session::forget('user');
+		$user->role = '';
+	}
+?>
+
 @extends('layout.master')
+
+@section('description')
+"社員管理システム 追加ページです。"
+@endsection
 
 @section('title')
 追加 | 社員管理システム
@@ -15,14 +26,14 @@
 @section('content')
 	<section>
         @include('members.common.member_error', ['errors' => $errors])
-        
+
 		<form name="addMember" class="pure-form pure-u-3-4" method="post" action="{{ url('/add/conf') }}">
 		{!! csrf_field() !!}
 		<table class="pure-table pure-table-bordered" width="100%">
 			<tbody>
-                
+
                 @include('members.common.member_form', ['errors' => $errors])
-				
+
 				<tr>
 					<td colspan="2" align="right">
 						<a class="pure-button pure-button-primary" href="{{ url('/search') }}">検索画面へ</a>

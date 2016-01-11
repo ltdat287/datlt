@@ -4,17 +4,18 @@ namespace App;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Carbon\Carbon;
 
+/**
+ * User model used to get info of member from database
+ */
 class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
+                                    AuthorizableContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use Authenticatable, Authorizable;
 
     /**
      * The database table used by the model.
@@ -38,6 +39,13 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
     /**
+     * The attributes that need date form to process date-time of Carbon
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at', 'birthday'];
+
+    /**
      * [getUsers Get user info where not disabled and older by updated_at DESC]
      * @return [collection]
      */
@@ -49,13 +57,67 @@ class User extends Model implements AuthenticatableContract,
     }
     /**
      * Get bosses not disable from db.
-     * 
+     *
      * @return objects
      */
     public static function getBosses()
     {
-        $results = self::where('disabled', '=', false)->where('role', '=', 'boss');
+        $results = self::where('disabled', '=', false)->where('role', '=', BOSS);
 
         return $results;
+    }
+    /**
+     * Get info of birthday date
+     * @param  [date] $value [value of birthday date]
+     * @return [date]        [result format date]
+     */
+    public function getBirthdayAttribute($value)
+    {
+        if ( is_null($value) ) {
+
+            return null;
+        } else {
+
+            return Carbon::parse($value)->format('Y/m/d');
+        }
+    }
+
+    /**
+     * [Disable write RememberToken after login for app]
+     * @return [null]
+     */
+    public function getRememberToken()
+    {
+        return null; // not supported
+    }
+
+    /**
+     * [Disable write RememberToken after login for app]
+     * @return [null]
+     */
+    public function setRememberToken($value)
+    {
+        // not supported
+    }
+
+    /**
+     * [Disable write RememberToken after login for app]
+     * @return [null]
+     */
+    public function getRememberTokenName()
+    {
+        return null; // not supported
+    }
+
+    /**
+    * Overrides the method to ignore the remember token.
+    */
+    public function setAttribute($key, $value)
+    {
+        $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+        if (!$isRememberTokenAttribute)
+        {
+            parent::setAttribute($key, $value);
+        }
     }
 }

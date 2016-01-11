@@ -3,6 +3,8 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Routing\Router;
 
 class Kernel extends HttpKernel
 {
@@ -34,5 +36,6 @@ class Kernel extends HttpKernel
         'check_edit' => \App\Http\Middleware\CheckUserHasEdit::class,
         'direct_access' => \App\Http\Middleware\CheckDirectAccess::class,
         'check_delete' => \App\Http\Middleware\CheckDeleteMember::class,
+        'check_param' => \App\Http\Middleware\CheckRequestParam::class,
     ];
 }

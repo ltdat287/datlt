@@ -16,15 +16,15 @@ else
     $role = ($role) ? $role : '';
     switch ($role)
     {
-        case 'admin':
-            $name     = $user->name . '(' . trans('飯塚 浩二（管理者）') . ')';
+        case ADMIN:
+            $name     = $user->name . trans('（管理者）');
             $arrLinks = array(
                 url('/search') => trans('検索'),
                 url('/add')    => trans('追加'),
                 url('/logout') => trans('ログアウト')
             );
             break;
-        case 'boss':
+        case BOSS:
             $name     = $user->name;
             $arrLinks = array(
                 url('/search') => trans('検索'),
@@ -32,7 +32,7 @@ else
                 url('/logout') => trans('ログアウト')
             );
             break;
-        case 'employee':
+        case EMPLOYEE:
             $name     = $user->name;
             $arrLinks = array(
                 url('/logout') => trans('ログアウト')
@@ -41,14 +41,14 @@ else
     }
 }
 ?>
-@if (count($arrLinks) && $routeName != 'login')
 <ul class="pure-menu-list force-right">
+@if (count($arrLinks) && $routeName != 'login')
     @if ($name)
     <li class="pure-menu-item"><span class="pure-menu-link">{{ $name }}</span></li>
     @endif
-    
+
     @foreach ($arrLinks as $link => $label)
 	<li class="pure-menu-item"><a href="{{ $link }}" class="pure-menu-link">{{ $label }}</a></li>
 	@endforeach
-</ul>
 @endif
+</ul>

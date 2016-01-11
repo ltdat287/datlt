@@ -1,4 +1,8 @@
-@extends('layout.master')
+@extends('layout.master_system_error')
+
+@section('description')
+""
+@endsection
 
 @section('title')
 エラー | 社員管理システム
@@ -13,18 +17,22 @@
 @endsection
 
 @section('content')
+<section>
+	<section class="error-box">
+		<h3>System Error</h3>
+		<ul>
+		@foreach ($errors as $error)
+	    	<?php
+	        // Write error to log.
+	        Log::error($error);
 
-<section class="error-box">
-	<h3>System error</h3>
-	<ul>
-	@foreach ($errors as $error)
-    	<?php 
-        // Write error to log.
-        Log::error($error);
-        ?>
-		<li>{{ trans('必須入力項目') }}{{ $error }}</li>
-	@endforeach
-	</ul>
+	        // Display error to webpage
+	       	$error = 'システムエラーが発生しました。';
+	        ?>
+			<li>{{ $error }}</li>
+		@endforeach
+		</ul>
+	</section>
 </section>
 
 @endsection

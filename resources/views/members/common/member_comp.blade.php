@@ -1,7 +1,11 @@
 @extends('layout.master')
 
+@section('description')
+"社員管理システム {{ $label }}ページです。"
+@endsection
+
 @section('title')
-追加（完了） | 社員管理システム
+{{ $label }} | 社員管理システム
 @endsection
 
 @section('header.h1')
@@ -14,7 +18,7 @@
 
 @section('content')
 	<section>
-		@if (MemberHelper::getCurrentUserRole() == 'employee')
+		@if (MemberHelper::getCurrentUserRole() == EMPLOYEE)
 			<p>
 				登録情報を更新しました。
 			</p>

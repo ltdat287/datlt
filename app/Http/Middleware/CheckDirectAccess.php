@@ -17,11 +17,12 @@ class CheckDirectAccess
     public function handle($request, Closure $next)
     {
         // Check permission delete current user.
-        if (MemberHelper::checkLogin()->id == $request->id) {
+        if (MemberHelper::checkLogin()->id == $request->id && MemberHelper::getCurrentUserRole() != ADMIN) {
             $errors[] = sprintf(trans('validation.not_direct_access'));
+
             return view('errors.system_error')->with('errors', $errors);
         }
-        
+
         return $next($request);
     }
 }

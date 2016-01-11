@@ -1,7 +1,11 @@
 @extends('layout.master')
 
+@section('description')
+"社員管理システム {{ $user->name . '（' . $user->kana  . '）' }}の詳細ページです。"
+@endsection
+
 @section('title')
-{{ $user->name }}({{ $user->kana }})の詳細 | 社員管理システム
+{{ $user->name . '（' . $user->kana  . '）' }}の詳細 | 社員管理システム
 @endsection
 
 @section('header.h1')
@@ -9,7 +13,7 @@
 @endsection
 
 @section('content.h2')
-編集
+{{ $user->name . '（' . $user->kana  . '）' }}の詳細
 @endsection
 
 @section('content')
@@ -19,20 +23,20 @@
 			<tbody>
 				<tr>
 					<th>{{ trans('ID') }}</th>
-					<td>{{{ $id }}}</td>
+					<td>{{ $id }}</td>
 				</tr>
-				
+
 				@include('members.common.member_infor', ['user' => $user, 'role' => $role, 'boss' => $boss])
-				
+
 				<tr>
 					<td colspan="2" align="right">
-					    @if (MemberHelper::getCurrentUserRole() != 'employee')
+					    @if (MemberHelper::getCurrentUserRole() != EMPLOYEE)
 						<a class="pure-button pure-button-primary" href="{{ url('/search') }}">{{ trans('検索画面へ') }}</a>
 						@endif
 						@if (MemberHelper::showEditButton($id))
 						<a class="pure-button button-secondary" href="{{ url('/member/' . $user->id . '/edit') }}">{{ trans('編集') }}</a>
 						@endif
-						@if (MemberHelper::getCurrentUserRole() != 'employee')
+						@if (MemberHelper::getCurrentUserRole() != EMPLOYEE)
 						<a class="pure-button button-error" href="{{ url('/member/' . $user->id . '/delete/conf') }}">{{ trans('削除') }}</a>
 						@endif
 					</td>

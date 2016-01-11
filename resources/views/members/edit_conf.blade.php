@@ -1,7 +1,11 @@
 @extends('layout.master')
 
+@section('description')
+"社員管理システム 編集（確認）ページです。"
+@endsection
+
 @section('title')
-編集 | 社員管理システム
+編集（確認） | 社員管理システム
 @endsection
 
 @section('header.h1')
@@ -9,7 +13,7 @@
 @endsection
 
 @section('content.h2')
-編集
+編集（確認）
 @endsection
 
 @section('content')
@@ -21,14 +25,14 @@
 			<tbody>
 			    <tr>
 					<th>{{ trans('ID') }}</th>
-					<td>{{{ $id }}}</td>
+					<td>{{ $id }}</td>
 				</tr>
-			
+
 				@include('members.common.member_infor', ['user' => $user])
-				
+
 				<tr>
 					<td colspan="2" align="right">
-						<a class="pure-button pure-button-primary" href="{{ url('member/' . $id . '/detail') }}">{{ trans('戻る') }}</a>
+						<button class="pure-button pure-button-primary" name="back" type="submit">戻る</button>
 						<button class="pure-button button-error" name="submit" type="submit">{{ trans('確認') }}</button>
 					</td>
 				</tr>

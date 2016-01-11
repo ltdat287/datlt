@@ -11,11 +11,7 @@
 <head>
 	<meta content=@yield('description') name="description">
 	<title>@yield('title')</title>
-	@if (Route::getCurrentRoute()->getName() === 'top')
-	<link href="{{ Request::url() }}/" rel="canonical">
-	@else
-	<link href="{{ Request::url() }}" rel="canonical">
-	@endif
+	<link href="" rel="canonical">
 	<link rel="stylesheet" href="{{ $css_pure_min }}">
     <link rel="stylesheet" href="{{ $css_custom }}">
 </head>

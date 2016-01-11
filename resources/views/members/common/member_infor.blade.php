@@ -6,7 +6,7 @@
 	<th>名前（カナ）</th>
 	<td>{{ $user->kana }}</td>
 </tr>
-@if (MemberHelper::getCurrentUserRole() != 'employee')
+@if (MemberHelper::getCurrentUserRole() != EMPLOYEE)
 <tr>
 	<th>メールアドレス</th>
 	<td>{{ $user->email }}</td>
@@ -18,28 +18,17 @@
 </tr>
 <tr>
 	<th>生年月日</th>
-	<?php 
-	   $birthday = new \Carbon($user->birthday);
-	?>
-	<td>{{ $birthday->format('Y/m/d') }}</td>
+	<td>{{ $user->birthday }}</td>
 </tr>
-@if (MemberHelper::getCurrentUserRole() != 'employee')
+@if (MemberHelper::getCurrentUserRole() != EMPLOYEE)
     <tr>
     	<th>ノート</th>
-    	<td><?php echo nl2br($user->note)?></td>
+    	<td>{{ $user->note }}</td>
     </tr>
-    @if (MemberHelper::getCurrentUserRole() == 'admin' )
+    @if (MemberHelper::getCurrentUserRole() == ADMIN )
         <tr>
             <th>権限</th>
-            @if ($user->role === 'admin')
-                <td>{{{ ADMIN }}}</td>
-            @elseif ($user->role === 'employee')
-                <td>{{{ EMPLOYEE }}}</td>
-            @elseif ($user->role === 'boss')
-                <td>{{{ BOSS }}}</td>
-            @else
-                <td>{{{ $user->role }}}</td>
-            @endif
+            <td>{{ MemberHelper::getNameRole($user->role) }}</td>
         </tr>
         <tr>
         	<th>BOSS</th>
@@ -50,8 +39,8 @@
             @endif
         </tr>
     @endif
-    
-    @if (MemberHelper::getCurrentUserRole() != 'employee' && isset($user->updated_at))
+
+    @if (MemberHelper::getCurrentUserRole() != EMPLOYEE && isset($user->updated_at))
         <tr>
             <th>{{ trans('更新日時') }}</th>
             <td>{{ $user->updated_at->format('Y/m/d H:i:s') }}</td>

@@ -1,7 +1,8 @@
-<?php 
+<?php
     $isFirst = (($users->currentPage() - 1) == 0) ? 'pure-button-disabled' : '';
     $isLast = ($users->currentPage() == $users->lastPage()) ? 'pure-button-disabled' : '';
 ?>
+@if ($users->total() > 1)
 <nav class="pure-menu pure-menu-horizontal">
 	<ul class="pure-menu-list">
 		<li class="pure-menu-item"><a href="{{ $users->url(1) }}" class="pure-menu-link pure-button {{ $isFirst }}">{{ trans('first') }}</a></li>
@@ -19,3 +20,4 @@
 		<li class="pure-menu-item"><a href="{{ $users->url($users->lastPage()) }}" class="pure-menu-link pure-button {{ $isLast }}">{{ trans('last') }}</a></li>
 	</ul>
 </nav>
+@endif

@@ -1,5 +1,9 @@
 @extends('layout.master')
 
+@section('description')
+"社員管理システム 削除（確認）ページです。"
+@endsection
+
 @section('title')
 削除（確認） | 社員管理システム
 @endsection
@@ -17,20 +21,27 @@
 	   @if (! $errors)
 	       <p>{{ trans('次のデータを削除します。') }}</p>
 	   @else
-	       @include('members.common.member_error', ['errors' => $errors])
+	       <section class="error-box">
+				<h3>!!ERROR!!</h3>
+				<ul>
+					@foreach ($errors as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</section>
 	   @endif
-	   
-	   	<form method="post" action="{{ url('member/' . $id . '/delete/comp') }}" >
+
+	   	<form class="pure-form pure-u-3-4" method="post" action="{{ url('member/' . $id . '/delete/comp') }}" >
 	   	{!! csrf_field() !!}
 		<table class="pure-table pure-table-bordered" width="100%">
 			<tbody>
 				<tr>
 					<th>{{ trans('ID') }}</th>
-					<td>{{{ $id }}}</td>
+					<td>{{ $id }}</td>
 				</tr>
-			
+
 				@include('members.common.member_infor', ['user' => $user])
-				
+
 				<tr>
 					<td colspan="2" align="right">
 						<a class="pure-button pure-button-primary" name="back" type="button" href="{{ url('member/' . $id . '/detail') }}">{{ trans('戻る') }}</a>

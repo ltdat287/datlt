@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Events\Dispatcher;
 
 class Kernel extends ConsoleKernel
 {
